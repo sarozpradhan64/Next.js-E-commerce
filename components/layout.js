@@ -5,48 +5,93 @@ import {
   Col,
   Row,
   Card,
+  Dropdown,
   Text,
   Button,
-  Avatar,
-  Spacer,
   Switch,
   useTheme,
 } from "@nextui-org/react";
 import { useTheme as useNextTheme } from "next-themes";
 import Sidebar from "./sidebar";
+import Ham from "../utils/icons/ham";
 
-export default function Layout({ title, description, children }) {
+export default function Layout({ title, description, children, ca }) {
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
-
+  const menuItems = [
+    { key: 1, name: "Home", href: "/" },
+    { key: 2, name: "Contact", href: "/contact" },
+    // { key: "edit", name: "Edit File" },
+  ];
   return (
     <>
       <Head>
-        <title>{title ? `${title} | NANU` : 'NANU STORES | Fashionable Jwelleries in Nepal: Neck Pieces, Earrings ...'}</title>
+        <title>
+          {title
+            ? `${title} | NANU`
+            : "Nanu Stores | Fashionable Jwelleries in Nepal: Neck Pieces, Earrings ..."}
+        </title>
         {description && <meta name="description" content={description} />}
       </Head>
-    <main style={{padding:'1rem 0'}}>
-      <Row gap={1}>
-        {/* sidebar */}
-        <Sidebar />
-        {/* sidebar end */}
-        {/* main  */}
-        <Col>
-          <Col css={{ paddingRight: "1rem" }}>
-            <Switch  size="xs"
-              color="secondary"
-              css={{ float: "right" }}
-              checked={isDark}
-              onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
-            />
+      <main style={{ padding: "1rem 0" }}>
+        <Row gap={1}>
+          {/* sidebar */}
+          <Sidebar />
+          {/* sidebar end */}
+
+          {/* main  */}
+          <Col>
+            <Col
+              css={{
+                pr: "1rem",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+              }}
+            >
+              <Dropdown>
+                <Dropdown.Button
+                  flat
+                  size="sm"
+                  css={{
+                    m: "1rem",
+                    "@xs": {
+                      display: "none!important",
+                    },
+                    display: "flex",
+                    borderRadius: "unset",
+                  }}
+                >
+                  <Ham />
+                </Dropdown.Button>
+                <Dropdown.Menu aria-label="Dynamic Actions" items={menuItems}>
+                  {(item) => (
+                    <Dropdown.Item color={"default"}>
+                      <Link
+                        key={item.key}
+                        href={item.href}
+                        passHref
+                      >
+                        <Button light>{item.name}</Button>
+                      </Link>
+                    </Dropdown.Item>
+                  )}
+                </Dropdown.Menu>
+              </Dropdown>
+              <Switch
+                size="xs"
+                color="secondary"
+                css={{ m: "1rem" }}
+                checked={isDark}
+                onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
+              />
+            </Col>
+            {/* content */}
+            {children}
           </Col>
-          {/* content */}
-          {children}
-        </Col>
-        {/* main end */}
-      </Row>
+          {/* main end */}
+        </Row>
       </main>
     </>
   );
 }
-
