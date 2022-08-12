@@ -7,14 +7,6 @@ import Products from '../../components/products';
 import data from "../../utils/data";
 
 export default function Product({ product, products, categories }) {
-  const router = useRouter();
-  if (router.isFallback) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
 
@@ -23,6 +15,14 @@ export default function Product({ product, products, categories }) {
     console.log("closed");
   };
 
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   console.log(product);
   return (
     <Layout>
