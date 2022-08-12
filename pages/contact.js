@@ -12,15 +12,15 @@ export default function contact() {
 
           <form name='Nanu Contact Form' method="POST" netlify data-netlify="true" >
           <input type="hidden" name="form-name" value="contact-form" />
-          <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Full Name" />
+          <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Full Name" name='name' />
            <Spacer y={2} />
           
-          <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Email" type="email"/>
+          <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Email" type="email" name='email'/>
            <Spacer y={2} />
           
-          <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Phone" type={'number'}/>
+          <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Phone" type={'number'} name='phone'/>
            <Spacer y={2} />
-           <Textarea css={{width:'100%'}}
+           <Textarea css={{width:'100%'}} name='message'
           underlined
           labelPlaceholder="Message"
         />
