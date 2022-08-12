@@ -63,6 +63,15 @@ export default function Sidebar() {
       >
         Nanu Stores
       </Text>
+      <Button
+        onClick={handleCollapse}
+        size="sm"
+        auto
+        color="error"
+        css={{ width: "auto", borderRadius: "unset", float:'right', m:'1rem 1.5rem' }}
+      >
+        {collapse ? "Open" : "Close"}
+      </Button>
       <Card
         css={{
           $$cardColor: "$colors$default",
@@ -71,7 +80,6 @@ export default function Sidebar() {
           height: "100%",
         }}
       >
-        <Button onClick={handleCollapse} auto color="error" icon={<h1>c</h1>} />
         <Card.Body>
           <Collapse.Group accordion={false}>
             <Collapse title={<Text h4>Menu</Text>} expanded>
@@ -94,7 +102,7 @@ export default function Sidebar() {
                 </div>
               ))}
             </Collapse>
-            <Collapse title={<Text h4>Categories</Text>}>
+            <Collapse title={<Text h4>Categories</Text>} expanded>
               {categoriesLinks.map((link, index) => (
                 <div key={index}>
                   <Button
