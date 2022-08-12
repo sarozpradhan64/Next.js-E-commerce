@@ -26,7 +26,7 @@ export default function Layout({ title, description, children }) {
         {description && <meta name="description" content={description} />}
       </Head>
     <main style={{padding:'1rem 0'}}>
-      <Row>
+      <Row gap={1}>
         {/* sidebar */}
         <Sidebar />
         {/* sidebar end */}

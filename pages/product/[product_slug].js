@@ -1,9 +1,18 @@
-import { Button,Modal, useModal, Col, Grid, Row, Text } from "@nextui-org/react";
-import React, {useState} from "react";
+import {
+  Button,
+  Modal,
+  Container,
+  useModal,
+  Col,
+  Grid,
+  Row,
+  Text,
+} from "@nextui-org/react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout";
-import Products from '../../components/products';
+import Products from "../../components/products";
 import data from "../../utils/data";
 
 export default function Product({ product, products, categories }) {
@@ -39,15 +48,20 @@ export default function Product({ product, products, categories }) {
         {product.title}
       </Text>
       <Grid.Container css={{ mt: "1rem" }} gap={2}>
-        <Grid xs={6}>
-          <Image
-            src={product.thumbnail}
-            height="100"
-            width="300"
-            alt={"Nanu stores-" + product.title}
-          />
+        <Grid xs={12} md={6}>
+          <div
+            style={{width: '100%', height: '400px', position: 'relative'}}
+          >
+            <Image
+              src={product.thumbnail}
+              objectFit="cover"
+              layout="fill"
+              alt={"Nanu-stores-" + product.title}
+            />
+          </div>
         </Grid>
-        <Grid xs={6}>
+
+        <Grid xs={12} md={6}>
           <Grid.Container>
             <Grid xs={12}>
               <Text h4>Price: Rs. {product.marked_price}</Text>
@@ -66,23 +80,41 @@ export default function Product({ product, products, categories }) {
                 </Button>
               </Text>
             </Grid>
-            <Grid css={{m:'1rem 0'}}>
-              <Button css={{borderRadius:'unset'}} color='secondary'
-              onClick={handler}
-              >Buy Now</Button>
+            <Grid css={{ m: "1rem 0" }}>
+              <Button
+                css={{ borderRadius: "unset" }}
+                color="secondary"
+                onClick={handler}
+              >
+                Buy Now
+              </Button>
             </Grid>
             <Grid xs={12} css={{ display: "flex", flexDirection: "column" }}>
               <Text h4> Description:</Text>
-              <Text css={{ textAlign: "justify", width: "80%" }}>
+              <Text css={{ textAlign: "justify", 
+              '@xs':{
+                width: "100%" 
+              },
+              '@md':{
+                width: "80%" 
+              },
+              }}>
                 {product.description}
               </Text>
             </Grid>
           </Grid.Container>
         </Grid>
       </Grid.Container>
-      <Text h3 css={{mt:'1rem'}}>Recommended Products</Text>
+      <Text h3 css={{ mt: "1rem" }}>
+        Recommended Products
+      </Text>
       <Grid.Container gap={2}>
-        <Products products={products.filter((item)=>item.category == product.category)} categories={categories}/>
+        <Products
+          products={products.filter(
+            (item) => item.category == product.category
+          )}
+          categories={categories}
+        />
       </Grid.Container>
 
       {/* modal  */}
@@ -93,13 +125,13 @@ export default function Product({ product, products, categories }) {
         onClose={closeHandler}
       >
         <Modal.Header>
-          <Text id="modal-title" b size={18} color='error'>
+          <Text id="modal-title" b size={18} color="error">
             Error !!
           </Text>
         </Modal.Header>
         <Modal.Body>
           <Text b>Please DM us in Social Media Platforms</Text>
-          <Text color='error'>Note: Website is under construction !</Text>
+          <Text color="error">Note: Website is under construction !</Text>
         </Modal.Body>
         <Modal.Footer>
           <Button auto flat color="error" onClick={closeHandler}>
@@ -124,7 +156,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const getProduct = await fetch(`${data.apiHost}/api/product/${params.product_slug}`);
+  const getProduct = await fetch(
+    `${data.apiHost}/api/product/${params.product_slug}`
+  );
   const product = await getProduct.json();
 
   var getProducts = await fetch(`${data.apiHost}/api/products`);

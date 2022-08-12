@@ -9,12 +9,13 @@ import {
   Text
 } from "@nextui-org/react";
 import Link from 'next/link';
+import Image from 'next/image';
 export default function Products({products, categories}) {
     const mapProducts = products.map((product, index) => (
         <Grid xs={6} sm={3} key={index}>
             <Link href={`/product/${product.slug}`} passHref>
           <Card isPressable>
-            <Card.Body css={{ p: 0, position: "relative" }}>
+            <Card.Body css={{ p: 0, position: "relative", height:'140px' }}>
               <Button
                 css={{
                   position: "absolute",
@@ -33,11 +34,10 @@ export default function Products({products, categories}) {
                     <span key={getcategory.id}>{getcategory.title}</span>
                   ))}
               </Button>
-              <Card.Image
+              <Image
                 src={product.thumbnail}
                 objectFit="cover"
-                width="100%"
-                height={140}
+                layout="fill"
                 alt={product.title}
               />
             </Card.Body>
