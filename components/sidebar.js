@@ -56,7 +56,7 @@ export default function Sidebar() {
       <Text
         h2
         css={{
-          textGradient: "45deg, $purple600 -20%, $pink600 100%",
+          textGradient:"45deg, $purple600 -20%, $pink600 100%",
           textAlign: "center",
         }}
         weight="bold"

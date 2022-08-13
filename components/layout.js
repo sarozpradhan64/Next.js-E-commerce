@@ -49,6 +49,10 @@ export default function Layout({ title, description, children, ca }) {
                 alignItems: "center",
               }}
             >
+              <Text h3 css={{textGradient: "45deg, $purple600 -20%, $pink600 100%", flex:'1',display:'block',
+              '@xs':{display:'none'}
+              }}>
+                Nanu Stores</Text>
               <Dropdown>
                 <Dropdown.Button
                   flat
@@ -67,11 +71,7 @@ export default function Layout({ title, description, children, ca }) {
                 <Dropdown.Menu aria-label="Dynamic Actions" items={menuItems}>
                   {(item) => (
                     <Dropdown.Item color={"default"}>
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        passHref
-                      >
+                      <Link key={item.key} href={item.href} passHref>
                         <Button light>{item.name}</Button>
                       </Link>
                     </Dropdown.Item>
