@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 export default function contact() {
   return (
     <Layout>
-      <HeaderTitle title={"Contact Us"} backBtn={true} />
+      <HeaderTitle title={"Send us your Message/Feedback"} backBtn={true} />
       <Grid.Container gap={2}>
         <Grid xs={12} sm={6} css={{display: 'flex', flexDirection: 'column', pt:'2rem'}}>
 
