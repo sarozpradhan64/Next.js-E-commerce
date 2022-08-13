@@ -2,7 +2,7 @@ import { Grid, Button,Spacer, Textarea, Text, Input } from "@nextui-org/react";
 import React from "react";
 import HeaderTitle from "../components/headerTitle";
 import Layout from "../components/layout";
-
+//test
 export default function contact() {
   return (
     <Layout>
