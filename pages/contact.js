@@ -10,8 +10,8 @@ export default function contact() {
       <Grid.Container gap={2}>
         <Grid xs={12} sm={6} css={{display: 'flex', flexDirection: 'column', pt:'2rem'}}>
 
-          <form name='Nanu Contact Form' method="POST" netlify data-netlify="true" >
-          <input type="hidden" name="form-name" value="contact-form" />
+          <form name='Nanu-Contact-Form' method="POST" netlify data-netlify="true" >
+          <input type="hidden" name="nanu_form" value="contact-form" />
           <Input clearable underlined css={{width:'100%'}} labelPlaceholder="Full Name" name='name' />
            <Spacer y={2} />
           
