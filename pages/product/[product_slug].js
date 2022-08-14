@@ -14,16 +14,16 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout";
 import Products from "../../components/products";
 import data from "../../utils/data";
+import ImageGallery from "../../utils/react-image-gallery/src/ImageGallery"
 
-export default function Product({ product, products, categories }) {
+export default function Product({ product, products, categories,images }) {
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
 
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
-
+  console.log(images)
   const router = useRouter();
   if (router.isFallback) {
     return (
@@ -33,8 +33,28 @@ export default function Product({ product, products, categories }) {
     );
   }
   console.log(product);
+
+  // image gallery functions
+  const myImages = [];
+  for (const item of images[0]) {
+            // item['image'] = item['original'];
+            // item.image = item.image;
+            item.thumbnail = item.image;
+            // item.alt_text = item.alt_text;
+            // item.thumbnailHeight = '100px';
+            // item.thumbnailWidth = 'auto'
+            myImages.push(item)
+  }
+  for (const item of images[1]) {
+    item.image = item.thumbnail;
+    // window.alert(item.image)
+    // item.thumbnail = item.thumbnail;
+    item.alt_text = "thumbnail"
+  
+    myImages.push(item)
+  }
   return (
-    <Layout>
+    <Layout title={product.title} description={product.description} ogImage={product.thumbnail}>
       <Button
         auto
         onClick={() => router.back()}
@@ -52,6 +72,7 @@ export default function Product({ product, products, categories }) {
           <div
             style={{width: '100%', height: '400px', position: 'relative'}}
           >
+             {/* <ImageGallery items={myImages}/> */}
             <Image
               src={product.thumbnail}
               objectFit="cover"
@@ -111,7 +132,7 @@ export default function Product({ product, products, categories }) {
       <Grid.Container gap={2}>
         <Products
           products={products.filter(
-            (item) => item.category == product.category
+            (item) => item.category == product.category && item.id !== product.id
           )}
           categories={categories}
         />

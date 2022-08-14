@@ -15,7 +15,7 @@ import { useTheme as useNextTheme } from "next-themes";
 import Sidebar from "./sidebar";
 import Ham from "../utils/icons/ham";
 
-export default function Layout({ title, description, children, ca }) {
+export default function Layout({ title, description, children, ogImage }) {
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
   const menuItems = [
@@ -31,6 +31,7 @@ export default function Layout({ title, description, children, ca }) {
             ? `${title} | NANU`
             : "Nanu Stores | Fashionable Jwelleries in Nepal: Neck Pieces, Earrings ..."}
         </title>
+        <meta property="og:image" content={ogImage ? ogImage : '/logo.png'}/>
         {description && <meta name="description" content={description} />}
       </Head>
       <main style={{ padding: "1rem 0" }}>
