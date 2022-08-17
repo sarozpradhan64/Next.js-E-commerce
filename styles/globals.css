@@ -26,3 +26,8 @@ a {
     background: black;
   }
 }
+
+
+.nextui-button-text{
+  z-index: 0!important;
+}

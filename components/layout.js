@@ -33,6 +33,17 @@ export default function Layout({ title, description, children, ogImage }) {
         </title>
         <meta property="og:image" content={ogImage ? ogImage : "/logo.png"} />
         {description && <meta name="description" content={description} />}
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charset="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
       </Head>
       <main style={{ padding: "1rem 0" }}>
         <Row gap={1}>

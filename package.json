@@ -19,6 +19,7 @@
     "react-fast-compare": "^3.2.0",
     "react-redux": "^8.0.2",
     "react-simple-image-viewer": "^1.2.2",
+    "react-slick": "^0.29.0",
     "react-swipeable": "^7.0.0",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9"

@@ -16,6 +16,7 @@ import Facebook from "../utils/icons/facebook";
 import Instagram from "../utils/icons/instagram";
 import Tiktok from "../utils/icons/tiktok";
 import ArrowLeft from "../utils/icons/arrowLeft";
+import ArrowRight from "../utils/icons/arrowRight";
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(false);
@@ -35,6 +36,13 @@ export default function Sidebar() {
     { title: "Neck Piece", href: "/neckpiece" },
   ];
 
+  const handleArrow = function () {
+    if (collapse) {
+      return <ArrowLeft />;
+    } else {
+      return <ArrowRight />;
+    }
+  };
   return (
     <Col
       span={collapse ? 2 : 3}
@@ -78,9 +86,11 @@ export default function Sidebar() {
           borderRadius: "unset",
           float: "right",
           m: "1rem 1.5rem",
+          zIndex: "0",
         }}
       >
-        <ArrowLeft />
+        {/* left and right arrows  */}
+        {collapse ? <ArrowRight /> : <ArrowLeft />}
         {collapse ? "Open" : "Close"}
       </Button>
       <Card

@@ -39,11 +39,11 @@ export default function ImageViewerNanu({images}) {
         ))}
       </div>
       {isViewerOpen && (
-        <ImageViewer
+        <ImageViewer style={{zIndex:'100', border:'2px solid red'}}
           src={srcList}
           currentIndex={currentImage}
           onClose={closeImageViewer}
-          disableScroll={false}
+          disableScroll={true}
           backgroundStyle={{
             backgroundColor: "rgba(0,0,0,0.9)",
           }}

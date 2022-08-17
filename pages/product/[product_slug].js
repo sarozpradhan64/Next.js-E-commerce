@@ -17,6 +17,7 @@ import data from "../../utils/data";
 import ImageViewerNanu from "../../components/imageViewer";
 
 export default function Product({ product, products, categories, images }) {
+
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
   const closeHandler = () => {
@@ -62,7 +63,7 @@ export default function Product({ product, products, categories, images }) {
       <Button
         auto
         onClick={() => router.back()}
-        css={{ borderRadius: "unset" }}
+        css={{ zIndex:'0',borderRadius: "unset" }}
         size={"sm"}
         color="secondary"
       >
@@ -108,9 +109,9 @@ export default function Product({ product, products, categories, images }) {
             </Grid>
             <Grid css={{ m: "1rem 0" }}>
               <Button
-                css={{ borderRadius: "unset" }}
                 color="secondary"
                 onClick={handler}
+                css={{zIndex:'0',borderRadius: "unset" }}
               >
                 Buy Now
               </Button>
