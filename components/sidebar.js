@@ -10,18 +10,21 @@ import {
   Button,
   Grid,
   Text,
+  Tooltip,
 } from "@nextui-org/react";
 import Facebook from "../utils/icons/facebook";
 import Instagram from "../utils/icons/instagram";
 import Tiktok from "../utils/icons/tiktok";
+import ArrowLeft from "../utils/icons/arrowLeft";
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(false);
+  const [tooltip, setTooltip] = useState(true);
 
   const handleCollapse = () => {
     setCollapse(!collapse);
+    setTooltip(false);
   };
-
   const navMenuLinks = [
     { title: "Home", href: "/" },
     { title: "Contact", href: "/contact" },
@@ -34,7 +37,7 @@ export default function Sidebar() {
 
   return (
     <Col
-      span={collapse ? 1 : 3}
+      span={collapse ? 2 : 3}
       css={{
         display: "none",
         "@xs": {
@@ -56,20 +59,28 @@ export default function Sidebar() {
       <Text
         h2
         css={{
-          textGradient:"45deg, $purple600 -20%, $pink600 100%",
+          textGradient: "45deg, $purple600 -20%, $pink600 100%",
           textAlign: "center",
         }}
         weight="bold"
       >
         Nanu Stores
       </Text>
+
       <Button
         onClick={handleCollapse}
         size="sm"
         auto
-        color="error"
-        css={{ width: "auto", borderRadius: "unset", float:'right', m:'1rem 1.5rem' }}
+        light
+        ripple={false}
+        css={{
+          width: "auto",
+          borderRadius: "unset",
+          float: "right",
+          m: "1rem 1.5rem",
+        }}
       >
+        <ArrowLeft />
         {collapse ? "Open" : "Close"}
       </Button>
       <Card

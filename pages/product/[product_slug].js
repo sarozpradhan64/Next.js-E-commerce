@@ -14,16 +14,15 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout";
 import Products from "../../components/products";
 import data from "../../utils/data";
-import ImageGallery from "../../utils/react-image-gallery/src/ImageGallery"
+import ImageViewerNanu from "../../components/imageViewer";
 
-export default function Product({ product, products, categories,images }) {
+export default function Product({ product, products, categories, images }) {
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
-
   const closeHandler = () => {
     setVisible(false);
   };
-  console.log(images)
+
   const router = useRouter();
   if (router.isFallback) {
     return (
@@ -32,29 +31,34 @@ export default function Product({ product, products, categories,images }) {
       </div>
     );
   }
-  console.log(product);
+
 
   // image gallery functions
   const myImages = [];
   for (const item of images[0]) {
-            // item['image'] = item['original'];
-            // item.image = item.image;
-            item.thumbnail = item.image;
-            // item.alt_text = item.alt_text;
-            // item.thumbnailHeight = '100px';
-            // item.thumbnailWidth = 'auto'
-            myImages.push(item)
+    // item['image'] = item['original'];
+    // item.image = item.image;
+    item.thumbnail = item.image;
+    // item.alt_text = item.alt_text;
+    // item.thumbnailHeight = '100px';
+    // item.thumbnailWidth = 'auto'
+    myImages.push(item);
   }
   for (const item of images[1]) {
     item.image = item.thumbnail;
     // window.alert(item.image)
     // item.thumbnail = item.thumbnail;
-    item.alt_text = "thumbnail"
-  
-    myImages.push(item)
+    item.alt_text = "thumbnail";
+
+    myImages.push(item);
+    console.log(myImages);
   }
   return (
-    <Layout title={product.title} description={product.description} ogImage={product.thumbnail}>
+    <Layout
+      title={product.title}
+      description={product.description}
+      ogImage={product.thumbnail}
+    >
       <Button
         auto
         onClick={() => router.back()}
@@ -69,16 +73,17 @@ export default function Product({ product, products, categories,images }) {
       </Text>
       <Grid.Container css={{ mt: "1rem" }} gap={2}>
         <Grid xs={12} md={6}>
-          <div
-            style={{width: '100%', height: '400px', position: 'relative'}}
-          >
-             {/* <ImageGallery items={myImages}/> */}
-            <Image
+          <div style={{ width: "100%", height: "400px", position: "relative" }}>
+          
+          <ImageViewerNanu images={myImages}/>
+
+            {/* <Image
+              onClick={ImageViewHandler}
               src={product.thumbnail}
               objectFit="cover"
               layout="fill"
               alt={"Nanu-stores-" + product.title}
-            />
+            /> */}
           </div>
         </Grid>
 
@@ -112,14 +117,17 @@ export default function Product({ product, products, categories,images }) {
             </Grid>
             <Grid xs={12} css={{ display: "flex", flexDirection: "column" }}>
               <Text h4> Description:</Text>
-              <Text css={{ textAlign: "justify", 
-              '@xs':{
-                width: "100%" 
-              },
-              '@md':{
-                width: "80%" 
-              },
-              }}>
+              <Text
+                css={{
+                  textAlign: "justify",
+                  "@xs": {
+                    width: "100%",
+                  },
+                  "@md": {
+                    width: "80%",
+                  },
+                }}
+              >
                 {product.description}
               </Text>
             </Grid>
@@ -132,18 +140,20 @@ export default function Product({ product, products, categories,images }) {
       <Grid.Container gap={2}>
         <Products
           products={products.filter(
-            (item) => item.category == product.category && item.id !== product.id
+            (item) =>
+              item.category == product.category && item.id !== product.id
           )}
           categories={categories}
         />
       </Grid.Container>
 
-      {/* modal  */}
+      {/*error modal  */}
       <Modal
         closeButton
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
+        
       >
         <Modal.Header>
           <Text id="modal-title" b size={18} color="error">

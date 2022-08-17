@@ -28,10 +28,10 @@ export default function Layout({ title, description, children, ogImage }) {
       <Head>
         <title>
           {title
-            ? `${title} | NANU`
+            ? `NANU | ${title}`
             : "Nanu Stores | Fashionable Jwelleries in Nepal: Neck Pieces, Earrings ..."}
         </title>
-        <meta property="og:image" content={ogImage ? ogImage : '/logo.png'}/>
+        <meta property="og:image" content={ogImage ? ogImage : "/logo.png"} />
         {description && <meta name="description" content={description} />}
       </Head>
       <main style={{ padding: "1rem 0" }}>
@@ -44,16 +44,23 @@ export default function Layout({ title, description, children, ogImage }) {
           <Col>
             <Col
               css={{
-                pr: "1rem",
+                p: 0,
                 display: "flex",
                 justifyContent: "flex-end",
                 alignItems: "center",
               }}
             >
-              <Text h3 css={{textGradient: "45deg, $purple600 -20%, $pink600 100%", flex:'1',display:'block',
-              '@xs':{display:'none'}
-              }}>
-                Nanu Stores</Text>
+              <Text
+                h3
+                css={{
+                  textGradient: "45deg, $purple600 -20%, $pink600 100%",
+                  flex: "1",
+                  display: "block",
+                  "@xs": { display: "none" },
+                }}
+              >
+                Nanu Stores
+              </Text>
               <Dropdown>
                 <Dropdown.Button
                   flat
