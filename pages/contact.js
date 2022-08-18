@@ -74,7 +74,7 @@ export default function contact() {
           </form>
         </Grid>
 
-        {/* <Grid xs={3} css={{ display: "flex", border: "2px solid red" }}>
+        <Grid xs={3} css={{ display: "flex", border: "2px solid red" }}>
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
             <Slider {...settings}>
               <div style={{height:'80vh',border:'2px solid green'}}>
@@ -97,7 +97,7 @@ export default function contact() {
               </div>
             </Slider>
           </div>
-        </Grid> */}
+        </Grid>
       </Grid.Container>
     </Layout>
   );
