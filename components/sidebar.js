@@ -68,11 +68,13 @@ export default function Sidebar() {
         h2
         css={{
           textGradient: "45deg, $purple600 -20%, $pink600 100%",
-          textAlign: "center",
+          textAlign: "center",cursor:'pointer'
         }}
         weight="bold"
       >
+        <Link href={'/'}>
         Nanu Stores
+        </Link>
       </Text>
 
       <Button

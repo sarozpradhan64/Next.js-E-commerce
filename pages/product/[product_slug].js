@@ -73,8 +73,8 @@ export default function Product({ product, products, categories, images }) {
         {product.title}
       </Text>
       <Grid.Container css={{ mt: "1rem" }} gap={2}>
-        <Grid xs={12} md={6}>
-          <div style={{ width: "100%", height: "400px", position: "relative" }}>
+        <Grid xs={12} md={5}>
+          <div style={{ width: "100%"}}>
           
           <ImageViewerNanu images={myImages}/>
 

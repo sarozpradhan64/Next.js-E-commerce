@@ -3,6 +3,7 @@ import Image from "next/image";
 import { createRoot } from "react-dom/client";
 import Slider from "react-slick";
 import ImageViewer from "react-simple-image-viewer";
+import { Col, Grid } from "@nextui-org/react";
 
 export default function ImageViewerNanu({ images }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -34,7 +35,7 @@ export default function ImageViewerNanu({ images }) {
 
   return (
     <>
-      <div style={{width:'500px', height:'400px'}}>
+      <Grid xs={12}>
         <Slider {...settings}>
           {images.map((item, index) => (
               <Image key={index}
@@ -48,7 +49,7 @@ export default function ImageViewerNanu({ images }) {
               />
           ))}
         </Slider>
-      </div>
+      </Grid>
       {isViewerOpen && (
         <ImageViewer
           style={{ zIndex: "100", border: "2px solid red" }}

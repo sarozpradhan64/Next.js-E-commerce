@@ -73,31 +73,6 @@ export default function contact() {
             </Button>
           </form>
         </Grid>
-
-        <Grid xs={3} css={{ display: "flex", border: "2px solid red" }}>
-          <div style={{ width: "100%", height: "100%", position: "relative" }}>
-            <Slider {...settings}>
-              <div style={{height:'80vh',border:'2px solid green'}}>
-                <h3>1</h3>
-              </div>
-              <div style={{height:'80vh',border:'2px solid green'}}>
-                <h3>2</h3>
-              </div>
-              <div style={{height:'80vh',border:'2px solid green'}}>
-                <h3>3</h3>
-              </div>
-              <div style={{height:'80vh',border:'2px solid green'}}>
-                <h3>4</h3>
-              </div>
-              <div style={{height:'80vh',border:'2px solid green'}}>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
-            </Slider>
-          </div>
-        </Grid>
       </Grid.Container>
     </Layout>
   );
