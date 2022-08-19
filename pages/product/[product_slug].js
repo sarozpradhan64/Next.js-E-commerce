@@ -60,6 +60,18 @@ export default function Product({ product, products, categories, images }) {
       description={product.description}
       ogImage={product.thumbnail}
     >
+      <style jsx>{`
+      .carousel-container{
+        width:450px
+      }
+      @media screen and (max-width:700px){
+        .carousel-container{
+          width:300px
+        }
+      }
+        
+      `}
+      </style>
       <Button
         auto
         onClick={() => router.back()}
@@ -73,18 +85,9 @@ export default function Product({ product, products, categories, images }) {
         {product.title}
       </Text>
       <Grid.Container css={{ mt: "1rem" }} gap={2}>
-        <Grid xs={12} md={5}>
-          <div style={{ width: "100%"}}>
-          
+        <Grid xs={12} md={6} css={{display:'flex', justifyContent:'center'}}>
+          <div className="carousel-container">
           <ImageViewerNanu images={myImages}/>
-
-            {/* <Image
-              onClick={ImageViewHandler}
-              src={product.thumbnail}
-              objectFit="cover"
-              layout="fill"
-              alt={"Nanu-stores-" + product.title}
-            /> */}
           </div>
         </Grid>
 

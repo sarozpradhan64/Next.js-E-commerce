@@ -35,7 +35,6 @@ export default function ImageViewerNanu({ images }) {
 
   return (
     <>
-      <Grid xs={12}>
         <Slider {...settings}>
           {images.map((item, index) => (
               <Image key={index}
@@ -49,7 +48,7 @@ export default function ImageViewerNanu({ images }) {
               />
           ))}
         </Slider>
-      </Grid>
+
       {isViewerOpen && (
         <ImageViewer
           style={{ zIndex: "100", border: "2px solid red" }}
