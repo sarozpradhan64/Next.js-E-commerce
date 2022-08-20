@@ -15,7 +15,7 @@ import { useTheme as useNextTheme } from "next-themes";
 import Sidebar from "./sidebar";
 import Ham from "../utils/icons/ham";
 
-export default function Layout({ title, description, children, ogImage }) {
+export default function Layout({ title, description, children, ogImage, categories }) {
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
   const menuItems = [
@@ -48,7 +48,7 @@ export default function Layout({ title, description, children, ogImage }) {
       <main style={{ padding: "1rem 0" }}>
         <Row gap={1}>
           {/* sidebar */}
-          <Sidebar />
+          <Sidebar categories={categories}/>
           {/* sidebar end */}
 
           {/* main  */}

@@ -2,9 +2,9 @@ import { Grid, Button, Spacer, Textarea, Text, Input } from "@nextui-org/react";
 import React from "react";
 import HeaderTitle from "../components/headerTitle";
 import Layout from "../components/layout";
-import Slider from "react-slick";
+import data from "../utils/data";
 //test
-export default function contact() {
+export default function contact({categories}) {
   var settings = {
     dots: true,
     infinite: true,
@@ -13,7 +13,7 @@ export default function contact() {
     slidesToScroll: 1,
   };
   return (
-    <Layout>
+    <Layout categories={categories}>
       <HeaderTitle title={"Send us your Message/Feedback"} backBtn={true} />
       <Grid.Container gap={2}>
         <Grid
@@ -76,4 +76,17 @@ export default function contact() {
       </Grid.Container>
     </Layout>
   );
+}
+
+export async function getStaticProps({ params }) {
+
+  var getProducts = await fetch(`${data.apiHost}/api/products`);
+  const products = await getProducts.json();
+
+  const getCategories = await fetch(`${data.apiHost}/api/category`);
+  const categories = await getCategories.json();
+  return {
+    props: {products, categories },
+    revalidate: 5,
+  };
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useState } from "react";
+import data from "../utils/data";
 import {
   Collapse,
   Spacer,
@@ -18,13 +19,11 @@ import Tiktok from "../utils/icons/tiktok";
 import ArrowLeft from "../utils/icons/arrowLeft";
 import ArrowRight from "../utils/icons/arrowRight";
 
-export default function Sidebar() {
+export default function Sidebar({categories}) {
   const [collapse, setCollapse] = useState(false);
-  const [tooltip, setTooltip] = useState(true);
 
   const handleCollapse = () => {
     setCollapse(!collapse);
-    setTooltip(false);
   };
   const navMenuLinks = [
     { title: "Home", href: "/" },
@@ -36,13 +35,6 @@ export default function Sidebar() {
     { title: "Neck Piece", href: "/neckpiece" },
   ];
 
-  const handleArrow = function () {
-    if (collapse) {
-      return <ArrowLeft />;
-    } else {
-      return <ArrowRight />;
-    }
-  };
   return (
     <Col
       span={collapse ? 2 : 3}
@@ -126,8 +118,9 @@ export default function Sidebar() {
               ))}
             </Collapse>
             <Collapse title={<Text h4>Categories</Text>} expanded>
-              {categoriesLinks.map((link, index) => (
+              {categories.map((link, index) => (
                 <div key={index}>
+                  <Link href={`/category/${link.slug}`}>
                   <Button
                     auto
                     color="light"
@@ -139,6 +132,7 @@ export default function Sidebar() {
                   >
                     {link.title}
                   </Button>
+                  </Link>
                   <Spacer y={0.5} />
                 </div>
               ))}
@@ -183,3 +177,4 @@ export default function Sidebar() {
     </Col>
   );
 }
+

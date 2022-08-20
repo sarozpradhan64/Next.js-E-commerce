@@ -1,9 +1,4 @@
 import {
-  Container,
-  Card,
-  Col,
-  Row,
-  Button,
   Grid,
   Text,
 } from "@nextui-org/react";
@@ -15,7 +10,7 @@ export default function App({ products, categories }) {
   console.log(products);
   return (
     <>
-      <Layout>
+      <Layout categories={categories}>
         <Text h3>Latest Products</Text>
         <Grid.Container gap={2}>
           <Products products={products} categories={categories} />

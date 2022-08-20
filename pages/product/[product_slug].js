@@ -36,15 +36,6 @@ export default function Product({ product, products, categories, images }) {
 
   // image gallery functions
   const myImages = [];
-  for (const item of images[0]) {
-    // item['image'] = item['original'];
-    // item.image = item.image;
-    item.thumbnail = item.image;
-    // item.alt_text = item.alt_text;
-    // item.thumbnailHeight = '100px';
-    // item.thumbnailWidth = 'auto'
-    myImages.push(item);
-  }
   for (const item of images[1]) {
     item.image = item.thumbnail;
     // window.alert(item.image)
@@ -54,11 +45,22 @@ export default function Product({ product, products, categories, images }) {
     myImages.push(item);
     console.log(myImages);
   }
+  for (const item of images[0]) {
+    // item['image'] = item['original'];
+    // item.image = item.image;
+    item.thumbnail = item.image;
+    // item.alt_text = item.alt_text;
+    // item.thumbnailHeight = '100px';
+    // item.thumbnailWidth = 'auto'
+    myImages.push(item);
+  }
+
   return (
     <Layout
       title={product.title}
       description={product.description}
       ogImage={product.thumbnail}
+      categories={categories}
     >
       <style jsx>{`
       .carousel-container{
