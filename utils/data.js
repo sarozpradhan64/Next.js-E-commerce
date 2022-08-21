@@ -71,7 +71,7 @@ const data = {
         description: 'A popular pants',
       },
     ],
-    // apiHost:'http://127.0.0.1:8000',
+    // apiHost:'http://127.0.0.1:7000',
     apiHost: 'http://nanu.gyannhub.com'
   };
   export default data;

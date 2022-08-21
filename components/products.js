@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import Link from 'next/link';
 import Image from 'next/image';
+import data from '../utils/data';
 export default function Products({products, categories}) {
     const mapProducts = products.map((product, index) => (
         <Grid xs={6} sm={3} key={index}>
@@ -35,7 +36,7 @@ export default function Products({products, categories}) {
                   ))}
               </Button>
               <Image
-                src={product.thumbnail}
+                src={`${data.apiHost}/media/${product.thumbnail}`}
                 objectFit="cover"
                 layout="fill"
                 alt={product.title}
