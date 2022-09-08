@@ -3,12 +3,12 @@ import Layout from "../../components/layout";
 import Products from "../../components/products";
 import data from "../../utils/data";
 
-export default function categoryProducts({ products, categories }) {
+export default function categoryProducts({ products, categories, category_slug }) {
   console.log(products);
   return (
     <>
       <Layout categories={categories}>
-        <Text h3>Latest Products</Text>
+        <Text h3>{category_slug}</Text>
         <Grid.Container gap={2}>
           <Products products={products} categories={categories} />
         </Grid.Container>
@@ -54,6 +54,7 @@ export async function getStaticProps({ params }) {
     props: {
       products,
       categories,
+      category_slug: params.category_slug
     },
     revalidate: 5,
   };

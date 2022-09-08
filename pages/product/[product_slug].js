@@ -36,23 +36,28 @@ export default function Product({ product, products, categories, images }) {
 
   // image gallery functions
   const myImages = [];
-  for (const item of images[1]) {
-    item.image = item.thumbnail;
-    // window.alert(item.image)
-    // item.thumbnail = item.thumbnail;
-    item.alt_text = "thumbnail";
-
-    myImages.push(item);
-    console.log(myImages);
+  // TypeError: Cannot read properties of null (reading 'default')
+  if(typeof images[1] !== 'undefined'){
+    for (const item of images[1]) {
+      item.image = item.thumbnail;
+      // item.thumbnail = item.thumbnail;
+      item.alt_text = "thumbnail";
+  
+      myImages.push(item);
+      console.log(myImages);
+    }
   }
-  for (const item of images[0]) {
-    // item['image'] = item['original'];
-    // item.image = item.image;
-    item.thumbnail = item.image;
-    // item.alt_text = item.alt_text;
-    // item.thumbnailHeight = '100px';
-    // item.thumbnailWidth = 'auto'
-    myImages.push(item);
+ 
+  if(typeof images[0] !== 'undefined'){
+    for (const item of images[0]) {
+      // item['image'] = item['original'];
+      // item.image = item.image;
+      item.thumbnail = item.image;
+      // item.alt_text = item.alt_text;
+      // item.thumbnailHeight = '100px';
+      // item.thumbnailWidth = 'auto'
+      myImages.push(item);
+  }
   }
 
   return (
