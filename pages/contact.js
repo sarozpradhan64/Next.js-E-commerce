@@ -23,6 +23,7 @@ export default function contact({categories}) {
         >
           <form
             name="Nanu-Contact"
+            action=""
             method="post"
             netlify
             data-netlify="true"
