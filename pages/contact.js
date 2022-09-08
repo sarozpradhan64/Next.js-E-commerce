@@ -22,13 +22,13 @@ export default function contact({categories}) {
           css={{ display: "flex", flexDirection: "column", pt: "2rem" }}
         >
           <form
-            name="Nanu-Contact-Form"
-            method="POST"
+            name="Nanu-Contact"
+            method="post"
             netlify
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact" />
-
+      <input name="test" />
             <Input
               clearable
               underlined
