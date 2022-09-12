@@ -21,36 +21,56 @@ export default function contact({categories}) {
           sm={6}
           css={{ display: "flex", flexDirection: "column", pt: "2rem" }}
         >
-       <form method="POST" name="contact-form" netlify  data-netlify="true" 
+          <form
+            name="Nanu-Contact"
+            method="post"
+            netlify
+            data-netlify="true"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <Input
+              clearable
+              underlined
+              css={{ width: "100%" }}
+              labelPlaceholder="Full Name"
+              name="name"
+            />
+            <Spacer y={2} />
+
+            <Input
+              clearable
+              underlined
+              css={{ width: "100%" }}
+              labelPlaceholder="Email"
+              type="email"
+              name="email"
+            />
+            <Spacer y={2} />
+
+            <Input
+              clearable
+              underlined
+              css={{ width: "100%" }}
+              labelPlaceholder="Phone"
+              type={"number"}
+              name="phone"
+            />
+            <Spacer y={2} />
+            <Textarea
+              css={{ width: "100%" }}
+              name="message"
+              underlined
+              labelPlaceholder="Message"
+            />
+            <Spacer y={2} />
+            <Button
+              color={"secondary"}
+              css={{ borderRadius: "unset" }}
+              type="submit"
             >
-            <input type="hidden" name="form-name" value="contact-form" />
-              <input
-                className="radius-default input"
-                name="name" type={'text'} required
-                placeholder="Your fullname"
-              />
-              <input
-                className="radius-default input"
-                name="email" type={'email'} required
-                placeholder="Email"
-              />
-              <input
-                className="radius-default input"
-                name="phone" type={'tel'} 
-                placeholder="Phone number"
-              />
-              <textarea
-                className="radius-default input textarea"
-                name="message" required
-                placeholder="Write your Message"
-              ></textarea>
-              <button
-                type="submit"
-                className="button-default button-big radius-button submit"
-              >
-                Send
-              </button>
-            </form>
+              Send Message
+            </Button>
+          </form>
         </Grid>
       </Grid.Container>
     </Layout>
